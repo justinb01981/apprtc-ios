@@ -148,6 +148,7 @@ static NSString const *kARDWSSMessagePayloadKey = @"msg";
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
   NSString *messageString = message;
+  NSLog(@"ARDWebSocketChannel.webSocket.didReceiveMessage:\n%@", messageString);
   NSData *messageData = [messageString dataUsingEncoding:NSUTF8StringEncoding];
   id jsonObject = [NSJSONSerialization JSONObjectWithData:messageData
                                                   options:0
@@ -206,6 +207,8 @@ static NSString const *kARDWSSMessagePayloadKey = @"msg";
   NSLog(@"Registering on WSS for rid:%@ cid:%@", _roomId, _clientId);
   // Registration can fail if server rejects it. For example, if the room is
   // full.
+  NSLog(@"ARDWebSocketChannel.registerWithCollider: WSS send:\n%@", messageString);
+    
   [_socket send:messageString];
   self.state = kARDWebSocketChannelStateRegistered;
 }

@@ -62,7 +62,11 @@
     //Connect to the room
     [self disconnect];
     self.client = [[ARDAppClient alloc] initWithDelegate:self];
-    [self.client setServerHostUrl:SERVER_HOST_URL];
+    NSString* roomServerURL = SERVER_HOST_URL;
+    if ([self.roomName compare:@"domain17"] == NSOrderedSame) {
+        roomServerURL = @"https://www.domain17.net:8009";
+    }
+    [self.client setServerHostUrl:roomServerURL];
     [self.client connectToRoomWithId:self.roomName options:nil];
     
     [self.urlLabel setText:self.roomUrl];
