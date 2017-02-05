@@ -52,8 +52,8 @@ static NSString *kARDRoomServerHostUrl =
     @"https://apprtc.appspot.com";
 static NSString *kARDRoomServerHostUrl2 =
 @"http://www.domain17.net:8008";
-static NSString *kARDRoomServerHostUrl2Room =
-@"domain17";
+//static NSString *kARDRoomServerHostUrl2Room =
+//@"domain17";
 static NSString *kARDRoomServerRegisterFormat =
     @"%@/join/%@";
 static NSString *kARDRoomServerMessageFormat =
@@ -63,8 +63,6 @@ static NSString *kARDRoomServerByeFormat =
 
 static NSString *kARDDefaultSTUNServerUrl =
     @"stun:stun.l.google.com:19302";
-static NSString *kARDDefaultSTUNServerUrl2 =
-@"stun:www.domain17.net:3478";
 // TODO(tkchin): figure out a better username for CEOD statistics.
 static NSString *kARDTurnRequestUrl =
     @"https://computeengineondemand.appspot.com"
@@ -206,6 +204,10 @@ static NSInteger kARDAppClientErrorInvalidRoom = -7;
     }
     NSLog(@"Registered with room server.");
     strongSelf.roomId = response.roomId;
+    NSString* roomIdOverride = [[NSUserDefaults standardUserDefaults] stringForKey:@"room_override"];
+    if(roomIdOverride) {
+      strongSelf.roomId = roomIdOverride;
+    }
     strongSelf.clientId = response.clientId;
     strongSelf.isInitiator = response.isInitiator;
     for (ARDSignalingMessage *message in response.messages) {
@@ -549,16 +551,9 @@ static NSInteger kARDAppClientErrorInvalidRoom = -7;
 - (void)registerWithRoomServerForRoomId:(NSString *)roomId
     completionHandler:(void (^)(ARDRegisterResponse *))completionHandler {
     
-    
-    if([roomId isEqualToString: kARDRoomServerHostUrl2Room]) {
-        _serverHostUrl = kARDRoomServerHostUrl2;
-        self.serverHostUrl = kARDRoomServerHostUrl2;
-        //_iceServers = [NSMutableArray arrayWithObject:[self defaultSTUNServer2]];
-        self.iceServers = _iceServers;
-    }
-    
   NSString *urlString =
-      [NSString stringWithFormat:kARDRoomServerRegisterFormat, self.serverHostUrl, roomId];
+    [NSString stringWithFormat:kARDRoomServerRegisterFormat, self.serverHostUrl, roomId];
+    
   NSURL *roomURL = [NSURL URLWithString:urlString];
   NSLog(@"Registering with room server.");
   __weak ARDAppClient *weakSelf = self;
@@ -723,13 +718,6 @@ static NSInteger kARDAppClientErrorInvalidRoom = -7;
   return [[RTCICEServer alloc] initWithURI:defaultSTUNServerURL
                                   username:@""
                                   password:@""];
-}
-
-- (RTCICEServer *)defaultSTUNServer2 {
-    NSURL *defaultSTUNServerURL = [NSURL URLWithString:kARDDefaultSTUNServerUrl2];
-    return [[RTCICEServer alloc] initWithURI:defaultSTUNServerURL
-                                    username:@""
-                                    password:@""];
 }
 
 #pragma mark - Audio mute/unmute

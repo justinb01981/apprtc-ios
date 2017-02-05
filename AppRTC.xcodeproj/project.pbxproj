@@ -16,6 +16,7 @@
 		5C80AAA61AAB71C700F21FFA /* ARTCVideoChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C80AAA51AAB71C700F21FFA /* ARTCVideoChatViewController.m */; };
 		5C80AAAA1AAB788A00F21FFA /* ARTCRoomTextInputViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C80AAA91AAB788A00F21FFA /* ARTCRoomTextInputViewCell.m */; };
 		65B60C96FF584964C27562A6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDADA2C0C3A5199BC24EF352 /* libPods.a */; };
+		D0292D451E46CEA400B56E86 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0292D441E46CEA400B56E86 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		5C80AAA91AAB788A00F21FFA /* ARTCRoomTextInputViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTCRoomTextInputViewCell.m; sourceTree = "<group>"; };
 		A91A157833594B50E74E767F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B6DABCBD6F43FEC6530D36B2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D0292D441E46CEA400B56E86 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		EDADA2C0C3A5199BC24EF352 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 		5C80AA6D1AAB5DF300F21FFA = {
 			isa = PBXGroup;
 			children = (
+				D0292D441E46CEA400B56E86 /* Settings.bundle */,
 				5C80AA781AAB5DF300F21FFA /* AppRTC */,
 				5C80AA771AAB5DF300F21FFA /* Products */,
 				4DD24E6966F906824AE26A91 /* Pods */,
@@ -198,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0292D451E46CEA400B56E86 /* Settings.bundle in Resources */,
 				5C80AA851AAB5DF300F21FFA /* Main.storyboard in Resources */,
 				5C80AA8A1AAB5DF300F21FFA /* LaunchScreen.xib in Resources */,
 				5C80AA871AAB5DF300F21FFA /* Images.xcassets in Resources */,

@@ -63,8 +63,12 @@
     [self disconnect];
     self.client = [[ARDAppClient alloc] initWithDelegate:self];
     NSString* roomServerURL = SERVER_HOST_URL;
-    if ([self.roomName compare:@"domain17"] == NSOrderedSame) {
-        roomServerURL = @"https://www.domain17.net:8009";
+    
+    //if ([self.roomName compare:@"domain17"] == NSOrderedSame) {
+    //    roomServerURL = @"https://www.domain17.net:8009";
+    //}
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"server_hostname"] != nil) {
+        roomServerURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"server_hostname"];
     }
     [self.client setServerHostUrl:roomServerURL];
     [self.client connectToRoomWithId:self.roomName options:nil];
