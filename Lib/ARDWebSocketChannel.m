@@ -193,10 +193,11 @@ static NSString const *kARDWSSMessagePayloadKey = @"msg";
   }
   NSParameterAssert(_roomId.length);
   NSParameterAssert(_clientId.length);
+
   NSDictionary *registerMessage = @{
     @"cmd": @"register",
     @"roomid" : _roomId,
-    @"clientid" : _clientId,
+    @"clientid" : _clientId
   };
   NSData *message =
       [NSJSONSerialization dataWithJSONObject:registerMessage

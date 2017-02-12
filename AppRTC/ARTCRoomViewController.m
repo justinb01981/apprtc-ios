@@ -54,13 +54,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ARTCVideoChatViewController *viewController = (ARTCVideoChatViewController *)[segue destinationViewController];
-    [viewController setRoomName:sender];
+    [viewController setRoomName:[sender valueForKey:@"room"] withUsername:[sender valueForKey:@"username"]];
 }
 
 #pragma mark - ARTCRoomTextInputViewCellDelegate Methods
 
 - (void)roomTextInputViewCell:(ARTCRoomTextInputViewCell *)cell shouldJoinRoom:(NSString *)room {
-    [self performSegueWithIdentifier:@"ARTCVideoChatViewController" sender:room];
+    NSString* userName = [[cell textFieldUsername] text];
+    
+    [self performSegueWithIdentifier:@"ARTCVideoChatViewController" sender:@{@"room": room, @"username": userName}];
 }
 
 @end

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *joinButton;
 @property (strong, nonatomic) IBOutlet UILabel *errorLabel;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *errorLabelHeightConstraint; //used for animating
+@property (strong, nonatomic) IBOutlet UITextField *textFieldUsername;
 
 - (IBAction)touchButtonPressed:(id)sender;
 

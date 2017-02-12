@@ -36,6 +36,7 @@
 
 @property (strong, nonatomic) NSString *roomUrl;
 @property (strong, nonatomic) NSString *roomName;
+@property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) ARDAppClient *client;
 @property (strong, nonatomic) RTCVideoTrack *localVideoTrack;
 @property (strong, nonatomic) RTCVideoTrack *remoteVideoTrack;
@@ -50,5 +51,7 @@
 - (IBAction)audioButtonPressed:(id)sender;
 - (IBAction)videoButtonPressed:(id)sender;
 - (IBAction)hangupButtonPressed:(id)sender;
+
+- (void)setRoomName:(NSString *)roomName withUsername:(NSString*)userName;
 
 @end

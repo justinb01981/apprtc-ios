@@ -204,10 +204,14 @@ static NSInteger kARDAppClientErrorInvalidRoom = -7;
     }
     NSLog(@"Registered with room server.");
     strongSelf.roomId = response.roomId;
-    NSString* roomIdOverride = [[NSUserDefaults standardUserDefaults] stringForKey:@"room_override"];
-    if(roomIdOverride) {
-      strongSelf.roomId = roomIdOverride;
-    }
+                          
+    // check settings for userid/roomid
+    //NSString* roomIdOverride = [[NSUserDefaults standardUserDefaults] stringForKey:@"room_override"];
+    //NSString* userIdOverride = [[NSUserDefaults standardUserDefaults] stringForKey:@"tiny_mediagw_username"];
+    //if(roomIdOverride && userIdOverride) {
+      //strongSelf.roomId = [NSString stringWithFormat:@"%@@%@", roomIdOverride, userIdOverride];
+    //}
+                          
     strongSelf.clientId = response.clientId;
     strongSelf.isInitiator = response.isInitiator;
     for (ARDSignalingMessage *message in response.messages) {
